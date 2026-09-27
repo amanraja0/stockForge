@@ -11,6 +11,7 @@ import OrdersPage from "./pages/OrdersPage";
 import InventoryLogsPage from "./pages/InventoryLogsPage";
 
 import UsersPage from "./pages/UsersPage";
+import SuppliersPage from "./pages/SuppliersPage";
 
 import NotFoundPage from "./pages/NotFoundPage";
 
@@ -64,6 +65,15 @@ function App() {
         element={
           <ProtectedRoute>
             <UsersPage />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/suppliers"
+        element={
+          <ProtectedRoute>
+            <SuppliersPage />
           </ProtectedRoute>
         }
       />

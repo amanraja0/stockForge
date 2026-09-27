@@ -10,6 +10,7 @@ export const createProduct = async (req, res) => {
       price,
       quantity,
       lowStockThreshold,
+      SupplierId,
     } = req.body;
 
     // validation
@@ -37,6 +38,7 @@ export const createProduct = async (req, res) => {
       price,
       quantity,
       lowStockThreshold,
+      SupplierId,
     });
 
     res.status(201).json(product);

@@ -38,6 +38,11 @@ const Navbar = () => {
       name: "Users",
       path: "/users",
     });
+
+    navLinks.push({
+      name: "Suppliers",
+      path: "/suppliers",
+    });
   }
 
   return (

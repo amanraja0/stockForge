@@ -1,6 +1,7 @@
 import express from "express";
 
 import authMiddleware from "../middleware/authMiddleware.js";
+import roleMiddleware from "../middleware/roleMiddleware.js";
 
 import {
   createSupplier,
@@ -11,7 +12,7 @@ import {
 
 const router = express.Router();
 
-router.post("/", authMiddleware, createSupplier);
+router.post("/", authMiddleware, roleMiddleware("ADMIN"), createSupplier);
 
 router.get("/", authMiddleware, getSuppliers);
 
