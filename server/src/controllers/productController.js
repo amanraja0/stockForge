@@ -1,5 +1,6 @@
 import Product from "../models/Product.js";
 import InventoryLog from "../models/InventoryLog.js";
+import Supplier from "../models/Supplier.js";
 
 export const createProduct = async (req, res) => {
   try {
@@ -93,6 +94,13 @@ export const getProducts = async (req, res) => {
       {
         where: whereClause,
 
+        include: [
+          {
+            model: Supplier,
+            attributes: ["id", "name"],
+          },
+        ],
+
         limit,
 
         offset,
@@ -121,7 +129,14 @@ export const getProducts = async (req, res) => {
 
 export const getSingleProduct = async (req, res) => {
   try {
-    const product = await Product.findByPk(req.params.id);
+    const product = await Product.findByPk(req.params.id, {
+      include: [
+        {
+          model: Supplier,
+          attributes: ["id", "name"],
+        },
+      ],
+    });
 
     if (!product) {
       return res.status(404).json({

@@ -309,6 +309,8 @@ const ProductsPage = () => {
 
               <th className="p-4 text-left">SKU</th>
 
+              <th className="p-4 text-left">Supplier</th>
+
               <th className="p-4 text-left">Price</th>
 
               <th className="p-4 text-left">Quantity</th>
@@ -322,13 +324,13 @@ const ProductsPage = () => {
           <tbody>
             {loading ? (
               <tr>
-                <td colSpan="6" className="text-center p-10">
+                <td colSpan="7" className="text-center p-10">
                   <div className="w-10 h-10 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto" />
                 </td>
               </tr>
             ) : products.length === 0 ? (
               <tr>
-                <td colSpan="6" className="text-center p-10 text-slate-400">
+                <td colSpan="7" className="text-center p-10 text-slate-400">
                   No products found
                 </td>
               </tr>
@@ -341,6 +343,14 @@ const ProductsPage = () => {
                   <td className="p-4">{product.name}</td>
 
                   <td className="p-4">{product.sku}</td>
+
+                  <td className="p-4">
+                    {product.Supplier
+                      ? `${product.Supplier.name} (ID: ${product.Supplier.id})`
+                      : product.SupplierId
+                        ? `Supplier ID: ${product.SupplierId}`
+                        : "Not assigned"}
+                  </td>
 
                   <td className="p-4">₹{product.price}</td>
 
